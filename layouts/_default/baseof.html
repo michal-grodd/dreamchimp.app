@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ .Site.Title }}</title>
+    {{ $style := resources.Get "css/style.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+
+    {{ $icon := resources.Get "app_icon.png" }}
+    {{ if $icon }}
+      {{ $favicon := $icon.Resize "32x32" }}
+      <link rel="icon" type="image/png" href="{{ $favicon.RelPermalink }}">
+      {{ $appleTouchIcon := $icon.Resize "180x180" }}
+      <link rel="apple-touch-icon" href="{{ $appleTouchIcon.RelPermalink }}">
+    {{ end }}
+  </head>
+  <body>
+    <div class="container">
+      {{ block "main" . }}{{ end }}
+      <footer style="line-height: 1.6;">
+        <div style="margin-bottom: 0.5rem;">
+          Dream Chimp is not affiliated with or endorsed by Universal Audio. All product names and brands are property of their respective owners.
+        </div>
+        <div>
+          &copy; {{ now.Year }} Michal Kalinowski. All rights reserved. &bull;
+          <a href="{{ with .Site.GetPage "impressum.md" }}{{ .RelPermalink }}{{ end }}" style="color: inherit; text-decoration: none; border-bottom: 1px solid #eee;">Impressum</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

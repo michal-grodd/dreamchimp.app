@@ -1,0 +1,9 @@
+baseURL = 'https://dreamchimp.app/'
+languageCode = 'en-us'
+title = 'Dream Chimp'
+relativeURLs = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

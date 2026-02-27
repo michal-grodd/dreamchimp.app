@@ -1,0 +1,25 @@
+{{ define "main" }}
+<header>
+    {{ $icon := resources.Get "app_icon.png" }} {{ if $icon }} {{ $resized :=
+    $icon.Resize "256x256" }}
+    <img src="{{ $resized.RelPermalink }}" alt="{{ .Site.Title }}" />
+    {{ end }}
+    <h1>{{ .Site.Title }}</h1>
+</header>
+
+<section class="hero">
+    {{ with .Site.GetPage "hero.md" }} {{ .Content }}
+
+    <!--<a href="{{ .Params.cta_link | default "#" }}" class="cta-button">
+      {{ .Params.cta_text | default "Download on the App Store" }}
+    </a>-->
+    {{ end }}
+</section>
+
+<section class="changelog">
+    <h2>Changelog</h2>
+    <div class="changelog-content">
+        {{ with .Site.GetPage "changelog.md" }} {{ .Content }} {{ end }}
+    </div>
+</section>
+{{ end }}
