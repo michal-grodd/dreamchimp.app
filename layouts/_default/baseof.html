@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ .Site.Title }}</title>
     {{ $style := resources.Get "css/style.css" | minify | fingerprint }}
-    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+    <link rel="stylesheet" href="{{ $style.Permalink }}">
 
     {{ $icon := resources.Get "app_icon.png" }}
     {{ if $icon }}
       {{ $favicon := $icon.Resize "32x32" }}
-      <link rel="icon" type="image/png" href="{{ $favicon.RelPermalink }}">
+      <link rel="icon" type="image/png" href="{{ $favicon.Permalink }}">
       {{ $appleTouchIcon := $icon.Resize "180x180" }}
-      <link rel="apple-touch-icon" href="{{ $appleTouchIcon.RelPermalink }}">
+      <link rel="apple-touch-icon" href="{{ $appleTouchIcon.Permalink }}">
     {{ end }}
   </head>
   <body>
@@ -24,7 +24,7 @@
         </div>
         <div>
           &copy; {{ now.Year }} Michal Kalinowski. All rights reserved. &bull;
-          <a href="{{ with .Site.GetPage "impressum.md" }}{{ .RelPermalink }}{{ end }}" style="color: inherit; text-decoration: none; border-bottom: 1px solid #eee;">Impressum</a>
+          <a href="{{ with .Site.GetPage "impressum.md" }}{{ .Permalink }}{{ end }}" style="color: inherit; text-decoration: none; border-bottom: 1px solid #eee;">Impressum</a>
         </div>
       </footer>
     </div>

@@ -2,7 +2,7 @@
 <header>
     {{ $icon := resources.Get "app_icon.png" }} {{ if $icon }} {{ $resized :=
     $icon.Resize "256x256" }}
-    <img src="{{ $resized.RelPermalink }}" alt="{{ .Site.Title }}" />
+    <img src="{{ $resized.Permalink }}" alt="{{ .Site.Title }}" />
     {{ end }}
     <h1>{{ .Site.Title }}</h1>
 </header>
