@@ -5,7 +5,7 @@ cta_text: "Download on the App Store"
 cta_link: "#"
 ---
   
-Dreamchimp lets you go beyond the knobs and fully shape the sound of your UAFX Dream ’65.
+Dream Chimp lets you go beyond the knobs and fully shape the sound of your UAFX Dream ’65.
 
 {{< video
   hevc="dreamchimp_hero_alt_hevc.mp4"
