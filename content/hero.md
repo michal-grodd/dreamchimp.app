@@ -9,10 +9,10 @@ cta_link: "#"
 Dreamchimp lets you go beyond the knobs and fully shape the sound of your UAFX Dream ’65.
 
 {{< video 
-  hevc="dreamchimp_hero_hevc.mp4" 
-  webm="dreamchimp_hero.webm" 
-  h264="dreamchimp_hero_h264.mp4" 
-  poster="dreamchimp_hero_poster.jpg" 
+  hevc="dreamchimp_hero_alt_hevc.mp4" 
+  webm="dreamchimp_hero_alt.webm" 
+  h264="dreamchimp_hero_alt_h264.mp4" 
+  poster="dreamchimp_hero_alt_poster.jpg" 
   class="hero-video" 
 >}}
 
