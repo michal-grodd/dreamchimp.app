@@ -4,8 +4,7 @@ headless: true
 cta_text: "Download on the App Store"
 cta_link: "#"
 ---
-
-**Dream bigger tones**  
+  
 Dreamchimp lets you go beyond the knobs and fully shape the sound of your UAFX Dream ’65.
 
 {{< video 
