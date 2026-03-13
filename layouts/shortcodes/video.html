@@ -3,8 +3,21 @@
 {{ $h264 := resources.Get (.Get "h264") }}
 {{ $poster := resources.Get (.Get "poster") }}
 
-<video autoplay muted loop playsinline {{ with $poster }}poster="{{ .RelPermalink }}"{{ end }} class="{{ .Get "class" }}">
-  {{ with $hevc }}<source src="{{ .RelPermalink }}" type="video/mp4; codecs='hvc1'">{{ end }}
-  {{ with $webm }}<source src="{{ .RelPermalink }}" type="video/webm">{{ end }}
-  {{ with $h264 }}<source src="{{ .RelPermalink }}" type="video/mp4">{{ end }}
-</video>
+<div class="hero-video-container {{ .Get "class" }}">
+  <video autoplay muted loop playsinline
+         {{ with $poster }}poster="{{ .RelPermalink }}"{{ end }}>
+
+    {{ with $hevc }}
+    <source src="{{ .RelPermalink }}" type="video/mp4; codecs='hvc1'">
+    {{ end }}
+
+    {{ with $webm }}
+    <source src="{{ .RelPermalink }}" type="video/webm">
+    {{ end }}
+
+    {{ with $h264 }}
+    <source src="{{ .RelPermalink }}" type="video/mp4">
+    {{ end }}
+
+  </video>
+</div>
