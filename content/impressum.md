@@ -13,7 +13,7 @@ Duesterntwiete 43
 Deutschland  
   
 #### Kontakt:  
-E-Mail: **support@dreamchimp.com**  
+E-Mail: **support@dreamchimp.app**  
 
 #### Verantwortlich für den Inhalt nach §18 Abs. 2 MStV    
 Michal Kalinowski  
