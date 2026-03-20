@@ -2,21 +2,32 @@
 title: "Privacy Policy"
 url: "/privacy"
 ---
-Effective date: **1 March 2026**
+Effective date: **20 March 2026**
 
 This Privacy Policy explains how **Michal Kalinowski** (“we”, “us”) handles personal data for the Dream Chimp app and this website.
 
 ## 1. Privacy first
-Dream Chimp collects only the minimal, pseudonymous data necessary to detect bugs and regressions in the app. No analytics are collected on this website.
-We do not use app analytics for marketing purposes.  
+Dream Chimp uses only minimal, privacy-focused analytics for the website and minimal pseudonymous telemetry for the app.
+We do not use analytics for advertising or cross-site tracking.  
 
 ## 2. Data we process
-Dream Chimp may send pseudonymous product telemetry to help us make product decisions, including:
+### Website analytics
+This website uses **Simple Analytics** to measure aggregate traffic and page usage.
+According to Simple Analytics' documentation, it does **not** use cookies, does **not** store IP addresses, and does **not** create personal identifiers for visitors.
+
+Website analytics may include non-personal, aggregate information such as:
+- page views
+- referrers
+- browser, device type, and language
+- country-level or time-zone-based location information
+
+### App telemetry
+Dream Chimp may send pseudonymous product telemetry from the app to help us detect bugs, regressions, and product issues, including:
 - pseudonymous install identifier (the server stores only a hash)
 - app version
 - platform
 
-This data cannot be used to identify you personally and is used only in aggregate to improve the app.  
+This data is used to improve the app and website and is not used to identify you personally.  
 Dream Chimp does not collect:
 - user accounts
 - personal profiles
@@ -29,11 +40,15 @@ Where the GDPR applies, we process data under the following legal bases:
 - **Legal obligations:** where required by applicable law (for example accounting/tax records)
 
 ## 4. Service providers
-We use service providers that process data on our behalf, including **PostHog** for minimal pseudonymous telemetry.
+We use service providers that help us operate Dream Chimp, including:
+- **Simple Analytics** for privacy-focused website analytics
+- **PostHog** for minimal pseudonymous app telemetry
+
 These providers process data under their own terms and privacy notices, and in accordance with applicable data protection laws.
 
 ## 5. International processing
-Your data may be processed outside your country, but it does not leave the **European Economic Area (EEA)**.
+Website analytics data collected by Simple Analytics is hosted in the **EU** according to its documentation.
+App telemetry and other operational data may be processed outside your country as needed to operate the service, subject to appropriate safeguards where applicable.
 
 ## 6. Data Retention
 Data is kept only as long as necessary for product improvement, security, or legal obligations.  
