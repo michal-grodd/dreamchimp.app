@@ -2,8 +2,6 @@
 title: "Privacy Policy"
 url: "/privacy"
 ---
-
-# Privacy Policy
 Effective date: **1 March 2026**
 
 This Privacy Policy explains how **Michal Kalinowski** (“we”, “us”) handles personal data for the Dream Chimp app and this website.

@@ -1,8 +1,6 @@
 ---
 title: "Impressum"
 ---
-
-# Impressum  
   
 #### Angaben gemäß § 5 TMG  
 
