@@ -4,6 +4,12 @@ headless: true
 draft: false
 ---
 
+### v26.11.0
+- First public beta.
+- Fixes connection issues when multiple pedals request to pair.
+- Improves error description for when an unpaired pedal drops the connection.
+- Peformance improvements of the bluetooth stack.
+
 ### v0.1.2
 - Second private beta, feature-complete and ready for public beta approval.
 - **Demo mode**: The app can now be used without a physical device. This mode is required for App Store review.
