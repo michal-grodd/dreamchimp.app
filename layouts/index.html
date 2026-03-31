@@ -18,6 +18,129 @@
     {{ end }}
 </section>
 
+{{ $supabaseURL := .Site.Params.supabase_url }}
+{{ $publishableKey := .Site.Params.supabase_publishable_key }}
+{{ $waitlistFunction := .Site.Params.waitlist_function }}
+{{ $waitlistEndpoint := printf "%s/functions/v1/%s" $supabaseURL $waitlistFunction }}
+
+<section class="waitlist" aria-labelledby="waitlist-title">
+    <div class="waitlist-card">
+        <div class="waitlist-copy">
+            <p class="waitlist-eyebrow">Dream Chimp is currently in beta.</p>
+            <h2 id="waitlist-title">Be the first to know when Dream Chimp launches.</h2>
+            <p class="waitlist-description">
+                Leave your email and I’ll let you know as soon as the app is ready to
+                download.
+            </p>
+        </div>
+
+        <form
+            class="waitlist-form"
+            method="post"
+            action="#"
+            aria-describedby="waitlist-note waitlist-feedback"
+            data-endpoint="{{ $waitlistEndpoint }}"
+            data-publishable-key="{{ $publishableKey }}"
+        >
+            <label class="sr-only" for="waitlist-email">Email address</label>
+            <input
+                id="waitlist-email"
+                name="email"
+                type="email"
+                inputmode="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+            />
+            <button type="submit">Notify me</button>
+        </form>
+        <p class="waitlist-feedback" id="waitlist-feedback" role="status" aria-live="polite"></p>
+
+        <p class="waitlist-note" id="waitlist-note">
+            No spam. Just the launch announcement.
+        </p>
+    </div>
+</section>
+
+{{ if and $supabaseURL $publishableKey $waitlistFunction }}
+<script>
+    (() => {
+        const form = document.querySelector(".waitlist-form");
+        if (!form) return;
+
+        const input = form.querySelector('input[name="email"]');
+        const button = form.querySelector('button[type="submit"]');
+        const feedback = document.getElementById("waitlist-feedback");
+        const endpoint = form.dataset.endpoint;
+        const publishableKey = form.dataset.publishableKey;
+        const defaultButtonLabel = button ? button.textContent : "";
+
+        if (!input || !button || !feedback || !endpoint || !publishableKey) return;
+
+        const setFeedback = (message, type = "") => {
+            feedback.textContent = message;
+            feedback.dataset.state = type;
+        };
+
+        const setSubmitting = (isSubmitting) => {
+            input.disabled = isSubmitting;
+            button.disabled = isSubmitting;
+            button.textContent = isSubmitting ? "Sending..." : defaultButtonLabel;
+        };
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            setFeedback("");
+
+            if (!input.reportValidity()) return;
+
+            setSubmitting(true);
+
+            try {
+                const response = await fetch(endpoint, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "apikey": publishableKey,
+                        "Authorization": `Bearer ${publishableKey}`,
+                    },
+                    body: JSON.stringify({ email: input.value }),
+                });
+
+                let payload = null;
+                try {
+                    payload = await response.json();
+                } catch (_) {
+                    payload = null;
+                }
+
+                if (response.ok && payload && payload.ok) {
+                    form.reset();
+                    setFeedback("You’re on the list. I’ll email you when Dream Chimp launches.", "success");
+                    return;
+                }
+
+                if (payload && payload.error === "invalid_email") {
+                    setFeedback("Please enter a valid email address.", "error");
+                    return;
+                }
+
+                if (payload && payload.error === "rate_limited") {
+                    setFeedback("Too many attempts from this network. Please try again later.", "error");
+                    return;
+                }
+
+                setFeedback("Something went wrong. Please try again in a moment.", "error");
+            } catch (_) {
+                setFeedback("Something went wrong. Please try again in a moment.", "error");
+            } finally {
+                setSubmitting(false);
+            }
+        });
+    })();
+</script>
+{{ end }}
+
 <section class="changelog">
     <h2>Changelog</h2>
     <div class="changelog-content">
