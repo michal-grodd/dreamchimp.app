@@ -2,6 +2,11 @@ baseURL = 'https://dreamchimp.app/'
 languageCode = 'en-us'
 title = 'Dream Chimp'
 
+[params]
+  supabase_url = 'https://afqjyhnkjcniirczhosy.supabase.co'
+  supabase_publishable_key = 'sb_publishable_5XSYc704KPBuB4LPqnlDQA_BAlThUGb'
+  waitlist_function = 'waitlist-signup'
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
