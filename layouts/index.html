@@ -12,9 +12,19 @@
 <section class="hero">
     {{ with .Site.GetPage "hero.md" }} {{ .Content }}
 
-    <!--<a href="{{ .Params.cta_link | default "#" }}" class="cta-button">
-      {{ .Params.cta_text | default "Download on the App Store" }}
-    </a>-->
+    {{ $appStoreBadge := resources.Get "app_store.svg" }}
+    {{ if $appStoreBadge }}
+    <div class="hero-cta">
+        <h2>Take full control of your Dream ’65 presets.</h2>
+        <p>Download Dream Chimp for iOS and iPadOS and unlock more advanced ways to use your pedal.</p>
+        <a href="{{ .Params.cta_link | default "#" }}" class="app-store-badge">
+            <img
+                src="{{ $appStoreBadge.RelPermalink }}"
+                alt="{{ .Params.cta_text | default "Download on the App Store" }}"
+            />
+        </a>
+    </div>
+    {{ end }}
     {{ end }}
 </section>
 
@@ -22,45 +32,6 @@
 {{ $publishableKey := .Site.Params.supabase_publishable_key }}
 {{ $waitlistFunction := .Site.Params.waitlist_function }}
 {{ $waitlistEndpoint := printf "%s/functions/v1/%s" $supabaseURL $waitlistFunction }}
-
-<section class="waitlist" aria-labelledby="waitlist-title">
-    <div class="waitlist-card">
-        <div class="waitlist-copy">
-            <p class="waitlist-eyebrow">Dream Chimp is currently in beta.</p>
-            <h2 id="waitlist-title">Be the first to know when Dream Chimp launches.</h2>
-            <p class="waitlist-description">
-                Leave your email and I’ll let you know as soon as the app is ready to
-                download.
-            </p>
-        </div>
-
-        <form
-            class="waitlist-form"
-            method="post"
-            action="#"
-            aria-describedby="waitlist-note waitlist-feedback"
-            data-endpoint="{{ $waitlistEndpoint }}"
-            data-publishable-key="{{ $publishableKey }}"
-        >
-            <label class="sr-only" for="waitlist-email">Email address</label>
-            <input
-                id="waitlist-email"
-                name="email"
-                type="email"
-                inputmode="email"
-                autocomplete="email"
-                placeholder="you@example.com"
-                required
-            />
-            <button type="submit">Notify me</button>
-        </form>
-        <p class="waitlist-feedback" id="waitlist-feedback" role="status" aria-live="polite"></p>
-
-        <p class="waitlist-note" id="waitlist-note">
-            No spam. Just the launch announcement.
-        </p>
-    </div>
-</section>
 
 {{ if and $supabaseURL $publishableKey $waitlistFunction }}
 <script>
@@ -145,6 +116,45 @@
     <h2>Changelog</h2>
     <div class="changelog-content">
         {{ with .Site.GetPage "changelog.md" }} {{ .Content }} {{ end }}
+    </div>
+</section>
+
+<section class="waitlist" aria-labelledby="waitlist-title">
+    <div class="waitlist-card">
+        <div class="waitlist-copy">
+            <p class="waitlist-eyebrow">Not a Dream ’65 owner?</p>
+            <h2 id="waitlist-title">We’re planning to support other UAFX pedals too.</h2>
+            <p class="waitlist-description">
+                We’ll be adding support for other UAFX pedals in the future. Leave your
+                email to be the first to know.
+            </p>
+        </div>
+
+        <form
+            class="waitlist-form"
+            method="post"
+            action="#"
+            aria-describedby="waitlist-note waitlist-feedback"
+            data-endpoint="{{ $waitlistEndpoint }}"
+            data-publishable-key="{{ $publishableKey }}"
+        >
+            <label class="sr-only" for="waitlist-email">Email address</label>
+            <input
+                id="waitlist-email"
+                name="email"
+                type="email"
+                inputmode="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+            />
+            <button type="submit">Notify me</button>
+        </form>
+        <p class="waitlist-feedback" id="waitlist-feedback" role="status" aria-live="polite"></p>
+
+        <p class="waitlist-note" id="waitlist-note">
+            No spam. Just product updates and new pedal support announcements.
+        </p>
     </div>
 </section>
 {{ end }}

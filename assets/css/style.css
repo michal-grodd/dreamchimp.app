@@ -55,6 +55,42 @@ header h1 {
     margin-bottom: 1.5rem;
 }
 
+.hero-cta {
+    margin-top: 1.75rem;
+    padding: 1.5rem;
+    border: 1px solid #eee;
+    border-radius: var(--radius);
+    background: #fafafa;
+    text-align: center;
+}
+
+.hero-cta h2 {
+    margin: 0;
+    font-size: 1.35rem;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.hero-cta p {
+    margin: 0.65rem 0 1rem;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.app-store-badge {
+    display: flex;
+    justify-content: center;
+    line-height: 0;
+}
+
+.app-store-badge img {
+    display: block;
+    height: 40px;
+    width: auto;
+}
+
 .hero-video {
     width: 100%;
     height: auto;
@@ -287,7 +323,7 @@ header h1 {
 }
 
 footer {
-    margin-top: 5rem;
+    margin-top: 6rem;
     color: var(--muted);
     font-size: 0.8rem;
     text-align: left;
