@@ -4,6 +4,10 @@ headless: true
 draft: false
 ---
 
+### v26.14.1
+- First public release 🎉🎉🎉
+- Compliance fixes for App Store review
+
 ### v26.11.0
 - First public beta.
 - Fixes connection issues when multiple pedals request to pair.
