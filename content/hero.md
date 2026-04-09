@@ -2,7 +2,7 @@
 title: "Hero"
 headless: true
 cta_text: "Download on the App Store"
-cta_link: "#"
+cta_link: "https://apps.apple.com/us/app/dream-chimp/id6759742021"
 ---
   
 Dream Chimp lets you go beyond the knobs and shape the sound of your UAFX Dream ’65. In stereo.
