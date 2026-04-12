@@ -17,7 +17,7 @@
     <div class="hero-cta">
         <h2>Take full control of your Dream ’65 presets.</h2>
         <p>Download Dream Chimp for iOS and iPadOS and unlock more advanced ways to use your pedal.</p>
-        <a href="{{ .Params.cta_link | default "#" }}" class="app-store-badge">
+        <a href="{{ .Params.cta_link | default "#" }}" class="app-store-badge" data-sa-link-event="click_app_store">
             <img
                 src="{{ $appStoreBadge.RelPermalink }}"
                 alt="{{ .Params.cta_text | default "Download on the App Store" }}"
@@ -36,6 +36,32 @@
 {{ if and $supabaseURL $publishableKey $waitlistFunction }}
 <script>
     (() => {
+        const appStoreLink = document.querySelector("[data-sa-link-event]");
+        if (appStoreLink) {
+            appStoreLink.addEventListener("click", (event) => {
+                const href = appStoreLink.getAttribute("href");
+                const eventName = appStoreLink.dataset.saLinkEvent;
+                const dntActive = parseInt(
+                    navigator.msDoNotTrack || window.doNotTrack || navigator.doNotTrack,
+                    10,
+                ) === 1;
+
+                if (!href || !eventName) return;
+                if (!window.sa_event || dntActive) return;
+
+                event.preventDefault();
+                if (window.sa_loaded) {
+                    window.sa_event(eventName, () => {
+                        window.location.href = href;
+                    });
+                    return;
+                }
+
+                window.sa_event(eventName);
+                window.location.href = href;
+            });
+        }
+
         const form = document.querySelector(".waitlist-form");
         if (!form) return;
 
