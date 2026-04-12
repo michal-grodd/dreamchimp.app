@@ -1,0 +1,10 @@
+{{- $limit := .limit | default 0 -}}
+{{- with .page -}}
+    {{- $entries := after 1 (split .RawContent "\n### ") -}}
+    {{- if gt $limit 0 -}}
+        {{- $entries = first $limit $entries -}}
+    {{- end -}}
+    {{- range $entries -}}
+        {{- printf "### %s" . | markdownify -}}
+    {{- end -}}
+{{- end -}}

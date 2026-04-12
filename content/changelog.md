@@ -1,6 +1,5 @@
 ---
 title: "Changelog"
-headless: true
 draft: false
 ---
 

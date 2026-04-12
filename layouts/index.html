@@ -115,7 +115,12 @@
 <section class="changelog">
     <h2>Changelog</h2>
     <div class="changelog-content">
-        {{ with .Site.GetPage "changelog.md" }} {{ .Content }} {{ end }}
+        {{ with .Site.GetPage "changelog.md" }}
+            {{ partial "changelog-content.html" (dict "page" . "limit" 3) }}
+            <p class="changelog-link">
+                <a href="{{ .RelPermalink }}">View full changelog</a>
+            </p>
+        {{ end }}
     </div>
 </section>
 

@@ -286,6 +286,41 @@ header h1 {
     color: var(--muted);
 }
 
+.changelog-link {
+    margin-top: 1.5rem;
+}
+
+.changelog-link a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    line-height: 1.15;
+}
+
+.page-content {
+    font-size: 1rem;
+}
+
+.page-content h2,
+.page-content h3 {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-content ul {
+    padding-left: 1.2rem;
+    color: var(--muted);
+}
+
 .hero-video-container {
     position: relative;
     width: 100%;
