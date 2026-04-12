@@ -4,6 +4,15 @@ headless: true
 draft: false
 ---
 
+### v26.15.1
+- Drag up or down on a setting’s label or value to adjust it
+- Added a non-linear slider curve for mic gain adjustment
+- Added negative “normal” boost settings to increase amp headroom
+- Improvements to Boost section UX
+- (Bugfix) Preset names now appear correctly in the UAFX Control App
+- (Bugfix) Vibrato is disabled when the amp is in DTEX mode
+- (Bugfix) The entire setting row is now tappable
+
 ### v26.14.1
 - First public release 🎉🎉🎉
 - Compliance fixes for App Store review
