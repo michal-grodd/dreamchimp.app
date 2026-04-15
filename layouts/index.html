@@ -36,104 +36,113 @@
 {{ if and $supabaseURL $publishableKey $waitlistFunction }}
 <script>
     (() => {
-        const appStoreLink = document.querySelector("[data-sa-link-event]");
-        if (appStoreLink) {
-            appStoreLink.addEventListener("click", (event) => {
-                const href = appStoreLink.getAttribute("href");
-                const eventName = appStoreLink.dataset.saLinkEvent;
-                const dntActive = parseInt(
-                    navigator.msDoNotTrack || window.doNotTrack || navigator.doNotTrack,
-                    10,
-                ) === 1;
+        const initPageInteractions = () => {
+            const appStoreLink = document.querySelector("[data-sa-link-event]");
+            if (appStoreLink) {
+                appStoreLink.addEventListener("click", (event) => {
+                    const href = appStoreLink.getAttribute("href");
+                    const eventName = appStoreLink.dataset.saLinkEvent;
+                    const dntActive = parseInt(
+                        navigator.msDoNotTrack || window.doNotTrack || navigator.doNotTrack,
+                        10,
+                    ) === 1;
 
-                if (!href || !eventName) return;
-                if (!window.sa_event || dntActive) return;
+                    if (!href || !eventName) return;
+                    if (!window.sa_event || dntActive) return;
 
+                    event.preventDefault();
+                    if (window.sa_loaded) {
+                        window.sa_event(eventName, () => {
+                            window.location.href = href;
+                        });
+                        return;
+                    }
+
+                    window.sa_event(eventName);
+                    window.location.href = href;
+                });
+            }
+
+            const form = document.querySelector(".waitlist-form");
+            if (!form) return;
+
+            const input = form.querySelector('input[name="email"]');
+            const button = form.querySelector('button[type="submit"]');
+            const feedback = document.getElementById("waitlist-feedback");
+            const endpoint = form.dataset.endpoint;
+            const publishableKey = form.dataset.publishableKey;
+            const defaultButtonLabel = button ? button.textContent : "";
+
+            if (!input || !button || !feedback || !endpoint || !publishableKey) return;
+
+            const setFeedback = (message, type = "") => {
+                feedback.textContent = message;
+                feedback.dataset.state = type;
+            };
+
+            const setSubmitting = (isSubmitting) => {
+                input.disabled = isSubmitting;
+                button.disabled = isSubmitting;
+                button.textContent = isSubmitting ? "Sending..." : defaultButtonLabel;
+            };
+
+            form.addEventListener("submit", async (event) => {
                 event.preventDefault();
-                if (window.sa_loaded) {
-                    window.sa_event(eventName, () => {
-                        window.location.href = href;
-                    });
-                    return;
-                }
+                setFeedback("");
 
-                window.sa_event(eventName);
-                window.location.href = href;
+                if (!input.reportValidity()) return;
+
+                setSubmitting(true);
+
+                try {
+                    const response = await fetch(endpoint, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "apikey": publishableKey,
+                            "Authorization": `Bearer ${publishableKey}`,
+                        },
+                        body: JSON.stringify({ email: input.value }),
+                    });
+
+                    let payload = null;
+                    try {
+                        payload = await response.json();
+                    } catch (_) {
+                        payload = null;
+                    }
+
+                    if (response.ok && payload && payload.ok) {
+                        form.reset();
+                        setFeedback("You’re on the list. You’ll be notified about major releases with new pedal support.", "success");
+                        return;
+                    }
+
+                    if (payload && payload.error === "invalid_email") {
+                        setFeedback("Please enter a valid email address.", "error");
+                        return;
+                    }
+
+                    if (payload && payload.error === "rate_limited") {
+                        setFeedback("Too many attempts from this network. Please try again later.", "error");
+                        return;
+                    }
+
+                    setFeedback("Something went wrong. Please try again in a moment.", "error");
+                } catch (_) {
+                    setFeedback("Something went wrong. Please try again in a moment.", "error");
+                } finally {
+                    setSubmitting(false);
+                }
             });
+        };
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initPageInteractions, { once: true });
+            return;
         }
 
-        const form = document.querySelector(".waitlist-form");
-        if (!form) return;
-
-        const input = form.querySelector('input[name="email"]');
-        const button = form.querySelector('button[type="submit"]');
-        const feedback = document.getElementById("waitlist-feedback");
-        const endpoint = form.dataset.endpoint;
-        const publishableKey = form.dataset.publishableKey;
-        const defaultButtonLabel = button ? button.textContent : "";
-
-        if (!input || !button || !feedback || !endpoint || !publishableKey) return;
-
-        const setFeedback = (message, type = "") => {
-            feedback.textContent = message;
-            feedback.dataset.state = type;
-        };
-
-        const setSubmitting = (isSubmitting) => {
-            input.disabled = isSubmitting;
-            button.disabled = isSubmitting;
-            button.textContent = isSubmitting ? "Sending..." : defaultButtonLabel;
-        };
-
-        form.addEventListener("submit", async (event) => {
-            event.preventDefault();
-            setFeedback("");
-
-            if (!input.reportValidity()) return;
-
-            setSubmitting(true);
-
-            try {
-                const response = await fetch(endpoint, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "apikey": publishableKey,
-                        "Authorization": `Bearer ${publishableKey}`,
-                    },
-                    body: JSON.stringify({ email: input.value }),
-                });
-
-                let payload = null;
-                try {
-                    payload = await response.json();
-                } catch (_) {
-                    payload = null;
-                }
-
-                if (response.ok && payload && payload.ok) {
-                    form.reset();
-                    setFeedback("You’re on the list. I’ll email you when Dream Chimp launches.", "success");
-                    return;
-                }
-
-                if (payload && payload.error === "invalid_email") {
-                    setFeedback("Please enter a valid email address.", "error");
-                    return;
-                }
-
-                if (payload && payload.error === "rate_limited") {
-                    setFeedback("Too many attempts from this network. Please try again later.", "error");
-                    return;
-                }
-
-                setFeedback("Something went wrong. Please try again in a moment.", "error");
-            } catch (_) {
-                setFeedback("Something went wrong. Please try again in a moment.", "error");
-            } finally {
-                setSubmitting(false);
-            }
-        });
+        initPageInteractions();
     })();
 </script>
 {{ end }}
