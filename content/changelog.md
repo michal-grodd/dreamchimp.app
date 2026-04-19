@@ -3,11 +3,19 @@ title: "Changelog"
 draft: false
 ---
 
+### v26.16.1
+- (Feature) Cab and microphone settings can now be unlinked
+- (Feature) Added “Save As” for presets
+- (Feature) Added an on/off toggle to the Boost section
+- (Improvement) Improved Bluetooth authorization screen to make fixing permissions in Settings easier
+- (Bugfix) Fixed inverted On/Off axis toggle
+- (Bugfix) Fixed preset name header issues with long preset names
+
 ### v26.15.1
-- Drag up or down on a setting’s label or value to adjust it
-- Added a non-linear slider curve for mic gain adjustment
-- Added negative “normal” boost settings to increase amp headroom
-- Improvements to Boost section UX
+- (Feature) Drag up or down on a setting’s label or value to adjust it
+- (Feature) Added a non-linear slider curve for mic gain adjustment
+- (Feature) Added negative “normal” boost settings to increase amp headroom
+- (Improvement) Various improvements to Boost section UX
 - (Bugfix) Preset names now appear correctly in the UAFX Control App
 - (Bugfix) Vibrato is disabled when the amp is in DTEX mode
 - (Bugfix) The entire setting row is now tappable
