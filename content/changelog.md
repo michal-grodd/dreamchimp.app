@@ -3,6 +3,13 @@ title: "Changelog"
 draft: false
 ---
 
+### v26.17.1
+- (Feature) Improved VoiceOver support and accessibility identifiers, making the app easier to use with Apple’s built-in screen reader
+- (Feature) Added support for larger system font sizes
+- (Feature) Added preset “Refresh” button to sync the app with the current state of the device
+- (Feature) Added ability to delete presets
+- NOTE: Refreshing a modified preset could leave the on-screen “Save” button in an inconsistent state (saving is still fully functional)
+
 ### v26.16.1
 - (Feature) Cab and microphone settings can now be unlinked
 - (Feature) Added “Save As” for presets
