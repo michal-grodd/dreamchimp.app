@@ -15,8 +15,8 @@
     {{ $appStoreBadge := resources.Get "app_store.svg" }}
     {{ if $appStoreBadge }}
     <div class="hero-cta">
-        <h2>Take full control of your Dream ’65 presets.</h2>
-        <p>Download Dream Chimp for iOS and iPadOS and unlock more advanced ways to use your pedal.</p>
+        <h2>Take full control over your UAFX pedals.</h2>
+        <p>Download Dream Chimp for iOS and iPadOS and unlock deeper control over your pedals.</p>
         <a href="{{ .Params.cta_link | default "#" }}" class="app-store-badge" data-sa-link-event="click_app_store">
             <img
                 src="{{ $appStoreBadge.RelPermalink }}"
@@ -114,7 +114,7 @@
 
                     if (response.ok && payload && payload.ok) {
                         form.reset();
-                        setFeedback("You’re on the list. You’ll be notified about major releases with new pedal support.", "success");
+                        setFeedback("You’re on the list. We’ll email you when major updates or new pedal support are released.", "success");
                         return;
                     }
 
@@ -162,11 +162,10 @@
 <section class="waitlist" aria-labelledby="waitlist-title">
     <div class="waitlist-card">
         <div class="waitlist-copy">
-            <p class="waitlist-eyebrow">Not a Dream ’65 owner?</p>
-            <h2 id="waitlist-title">We’re planning to support other UAFX pedals too.</h2>
+            <p class="waitlist-eyebrow">Not using a supported UAFX pedal yet?</p>
+            <h2 id="waitlist-title">We’re actively expanding support across the UAFX lineup.</h2>
             <p class="waitlist-description">
-                We’ll be adding support for other UAFX pedals in the future. Leave your
-                email to be the first to know.
+                Leave your email to hear when new pedal support lands.
             </p>
         </div>
 
@@ -193,7 +192,7 @@
         <p class="waitlist-feedback" id="waitlist-feedback" role="status" aria-live="polite"></p>
 
         <p class="waitlist-note" id="waitlist-note">
-            No spam. Just product updates and new pedal support announcements.
+            No spam. Just product updates and new support announcements.
         </p>
     </div>
 </section>

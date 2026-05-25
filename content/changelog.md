@@ -3,6 +3,13 @@ title: "Changelog"
 draft: false
 ---
 
+### v26.21.0
+- (Feature) Added support for Lion ’68 with the same familiar stereo cab sim workflow
+  - (Feature) Expanded the boost section for more flexible tone shaping: gain can now be adjusted independently, and the Echoplex and GE-10 can be enabled separately
+  - (Feature) Added three new cab options: Mesa 4x12, 4x12 White 75 from Knuckles, and the previously unavailable “Brown Split Celestion” cab
+  - (Feature) Added additional room sound controls, including adjustable room size and other ambience parameters
+- (Feature) Added multi-device support for connecting both Dream ’65 and Lion ’68 simultaneously and switching between them.
+
 ### v26.17.1
 - (Feature) Improved VoiceOver support and accessibility identifiers, making the app easier to use with Apple’s built-in screen reader
 - (Feature) Added support for larger system font sizes
