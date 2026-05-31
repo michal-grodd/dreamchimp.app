@@ -3,6 +3,12 @@ title: "Changelog"
 draft: false
 ---
 
+### v26.23.1
+- (Feature) Added a preset browser for navigation and preset management
+- (Feature) The app now remembers the last selected tab when switching presets, making it easier to stay focused on the controls you're editing
+- (Improvement) Enhanced Bluetooth connectivity and communication reliability for a more stable experience
+- (Bugfix) Fixed an issue where the Save button was not always displayed after refreshing presets
+
 ### v26.21.0
 - (Feature) Added support for Lion ’68 with the same familiar stereo cab sim workflow
   - (Feature) Expanded the boost section for more flexible tone shaping: gain can now be adjusted independently, and the Echoplex and GE-10 can be enabled separately
