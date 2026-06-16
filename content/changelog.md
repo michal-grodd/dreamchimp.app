@@ -3,6 +3,10 @@ title: "Changelog"
 draft: false
 ---
 
+### v26.25.0
+- (Improvement) Presets now load faster for a more responsive experience
+- (Improvement) Device status and controls now sync twice as often for smoother real-time feedback
+
 ### v26.23.1
 - (Feature) Added a preset browser for navigation and preset management
 - (Feature) The app now remembers the last selected tab when switching presets, making it easier to stay focused on the controls you're editing
