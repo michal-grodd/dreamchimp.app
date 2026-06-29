@@ -3,6 +3,13 @@ title: "Changelog"
 draft: false
 ---
 
+### v26.27.0
+- (Feature) Support for UAFX Ruby '63
+  - Independently select the boost type for each channel
+  - Access both High and Low inputs on every channel
+  - Familiar stereo cab sim workflow
+  - Advanced room reverb controls
+
 ### v26.25.0
 - (Improvement) Presets now load faster for a more responsive experience
 - (Improvement) Device status and controls now sync twice as often for smoother real-time feedback
