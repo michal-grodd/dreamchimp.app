@@ -3,6 +3,16 @@ title: "Changelog"
 draft: false
 ---
 
+### v26.29.0
+- Support for UAFX Woodrow '55
+  - New Rangemaster boost type, now available for Woodrow '55 (previously exclusive to Ruby '63)
+  - Familiar stereo cab sim workflow
+  - Advanced room reverb controls
+- Improved preset browser
+  - Pin the preset browser to quickly browse presets without reopening it
+- Bug fixes
+  - Added the missing Feedback button in the Ruby editor
+
 ### v26.27.0
 - (Feature) Support for UAFX Ruby '63
   - Independently select the boost type for each channel
