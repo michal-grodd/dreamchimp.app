@@ -3,6 +3,14 @@ title: "Changelog"
 draft: false
 ---
 
+### v26.36.9
+- Master volume control
+  - Added a master volume setting to all four pedals
+  - For stereo presets, master volume can be adjusted independently for each channel
+
+- Improved iPad editor layout
+  - Optimized the editor layout for a better experience on iPad
+
 ### v26.29.0
 - Support for UAFX Woodrow '55
   - New Rangemaster boost type, now available for Woodrow '55 (previously exclusive to Ruby '63)
