@@ -3,7 +3,10 @@ title: "Changelog"
 draft: false
 ---
 
-### v26.36.9
+### v26.36.1
+- iOS27 compatibility fixes
+
+### v26.36.0
 - Master volume control
   - Added a master volume setting to all four pedals
   - For stereo presets, master volume can be adjusted independently for each channel
